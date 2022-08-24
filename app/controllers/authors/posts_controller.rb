@@ -1,4 +1,5 @@
-class PostsController < ApplicationController
+module Authors
+  class PostsController < ApplicationController
   before_action :set_post, only: %i[ show edit update destroy ]
 
   # GET /posts
@@ -42,7 +43,7 @@ class PostsController < ApplicationController
   # DELETE /posts/1
   def destroy
     @post.destroy
-    redirect_to posts_url, notice: "Post was successfully destroyed."
+    redirect_to posts_url, notice: "Post was successfully deleted."
   end
 
   private
@@ -55,4 +56,7 @@ class PostsController < ApplicationController
     def post_params
       params.require(:post).permit(:title, :description, :published, :published_at, :author_id)
     end
+  end
 end
+
+
