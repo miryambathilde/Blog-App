@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :elements
   devise_for :authors
   get 'home/index'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
@@ -7,8 +6,10 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
   root to: "home#index"
-  # authors now is insided de scope of authors = Authors::PostsController
+  # authors now is inside de scope of authors = Authors::PostsController
   scope module: 'authors' do
-    resources :posts
+    resources :posts do
+      resources :elements
+    end
   end
 end
