@@ -13,3 +13,10 @@
  *= require_tree .
  *= require_self
  */
+
+
+a,
+a:hover,
+a:focus {
+	text-decoration: none;
+}
