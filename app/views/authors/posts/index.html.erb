@@ -1,26 +1,32 @@
-<div class="container">
-  <h4 class="d-flex justify-content-end mb-4">
-    <%= link_to "New post", new_post_path, class: 'btn btn-primary' %>
-  </h4>
-  
-    <h2>List posts</h2>
-    
-    <% @posts.each do |post| %>
-      <%= link_to post do %>
-        <div class="card mb-3 mt-4">
-          <div class="card-body">
-            <h5 class="card-title text-primary text-decoration-none"><%= post.title %></h5>
-            <p class="text-dark text-decoration-none"><%= post.description %></p>
-            <div class="d-flex flex-wrap" style="gap: 4px">
-              <div><%= link_to 'Show this post', post, class: 'btn btn-primary' %></div>
-              <div><%= link_to 'Edit', edit_post_path(post), class: 'btn btn-success' %></div>
-              <div><%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?'}, class: 'btn btn-danger' %></div>
-            </div>
-          </div> 
-        </div>
-      <% end %>
-    <% end %>
-</div>
+<p style="color: green"><%= notice %></p>
 
+<h1>Posts</h1>
+
+<table id="posts">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Publised</th>
+      <th>Publised at</th>
+      <th>Author</th>
+      <th colspan="3">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @posts.each do |post| %>
+      <tr>
+        <td><%= post.title %></td>
+        <td><%= post.description %></td>
+        <td><%= post.published %></td>
+        <td><%= post.published_at %></td>
+        <td><%= post.author_id %></td>
+        <td><%= link_to 'Show', post %></td>
+        <td><%= link_to 'Edit', edit_post_path(post) %></td>
+        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?'} %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
 <%= link_to "New post", new_post_path %>

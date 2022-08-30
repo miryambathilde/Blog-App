@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   root to: "authors/posts#index"
   # authors now is insided de scope of authors = Authors::PostsController
   scope module: 'authors' do
-    resources :posts
+    resources :posts do
+      resources :elements
+    end
   end
 end
