@@ -1,27 +1,34 @@
-<%= form_with(model: post) do |form| %>
-  <% if post.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
-
-      <ul>
-        <% post.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+<div class="mt-4">
+  <%= form_with(model: post) do |form| %>
+    <% if post.errors.any? %>
+      <div style="color: red">
+        <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+  
+        <ul>
+          <% post.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+  
+    <div class="form-group font-weight-bold text-dark mt-2">
+      <%= form.label :title, style: "display: block" %>
+      <%= form.text_field :title, class: 'form-control' %>
+    </div>
+  
+    <div class="form-group font-weight-bold text-dark mt-4">
+      <%= form.label :description, style: "display: block" %>
+      <%= form.text_area :description, class: 'form-control' %>
+    </div>
+  
+    <div class="field">
+      <%= form.label :published_at, style: "display: block" %>
+      <%= form.datetime_field :published_at %>
+    </div>
+  
+    <div class="actions mt-4 mt-4">
+      <%= form.submit class: 'btn btn-info btn-block' %>
     </div>
   <% end %>
-
-  <div class="form-group font-weight-bold text-dark mt-2">
-    <%= form.label :title, style: "display: block" %>
-    <%= form.text_field :title, class: 'form-control' %>
-  </div>
-
-  <div class="form-group font-weight-bold text-dark mt-4">
-    <%= form.label :description, style: "display: block" %>
-    <%= form.text_area :description, class: 'form-control' %>
-  </div>
-
-  <div class="actions mt-4">
-    <%= form.submit class: 'btn btn-info btn-block' %>
-  </div>
-<% end %>
+</div>
